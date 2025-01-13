@@ -16,5 +16,5 @@ build:
   commands:
     - pip install mkdocs
     - pip install mkdocs-material  
-    - mkdocs build --strict  
     - pip install mkdocs-rtd-dropdown
+    - mkdocs build --strict  

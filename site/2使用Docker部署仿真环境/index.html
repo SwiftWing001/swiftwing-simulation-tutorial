@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://SwiftWing001.github.io/swiftwing-simulation-tutorial/2%E4%BD%BF%E7%94%A8Docker%E9%83%A8%E7%BD%B2%E4%BB%BF%E7%9C%9F%E7%8E%AF%E5%A2%83/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>使用docker部署仿真环境 - swiftwing-simulation-tutorial</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../css/custom.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\u4f7f\u7528docker\u90e8\u7f72\u4eff\u771f\u73af\u5883";
+        var mkdocs_page_input_path = "2\u4f7f\u7528Docker\u90e8\u7f72\u4eff\u771f\u73af\u5883.md";
+        var mkdocs_page_url = "/swiftwing-simulation-tutorial/2%E4%BD%BF%E7%94%A8Docker%E9%83%A8%E7%BD%B2%E4%BB%BF%E7%9C%9F%E7%8E%AF%E5%A2%83/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> swiftwing-simulation-tutorial
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">迅翼SwiftWing仿真平台使用手册目录</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../1%E4%BB%BF%E7%9C%9F%E5%B9%B3%E5%8F%B0%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">仿真平台环境配置</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">使用docker部署仿真环境</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#1">1 网络代理</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-dockerfile">2 dockerfile修改</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-docker-build">3 docker build</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#4-docker-run">4 docker run</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../3%E4%BB%BF%E7%9C%9Fdemo%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/">仿真demo快速上手</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../4uav_control%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">uav_control功能包</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">swiftwing-simulation-tutorial</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">使用docker部署仿真环境</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="docker">使用docker部署仿真环境</h1>
+<p>使用docker进行仿真环境的部署可以有效得与本机环境隔离，通常适用于不同环境变量下的多种仿真环境。</p>
+<p>注意事项：新手小白不建议入门就开始使用docker，建议有一定的安装环境以及linux基础后，再考虑使用docker。建议初学者一定要自己从头安装一遍仿真环境，熟悉完整流程。</p>
+<h2 id="1">1 网络代理</h2>
+<p>docker中的网络代理可以参考此处<a href="https://neucrack.com/p/286">链接</a></p>
+<h2 id="2-dockerfile">2 dockerfile修改</h2>
+<p>1.提供的dockerfile的第8 9行，需要自行修改代理：</p>
+<pre><code class="language-shell">ENV HTTPS_PROXY=http://127.0.0.1:your port 
+ENV HTTPS_PROXY=http://127.0.0.1:your port
+</code></pre>
+<p>2.默认下载PX4 1.15.0版本，如有需要，在dockerfile第64行可以指定PX4版本：</p>
+<pre><code class="language-shell">RUN git clone https://github.com/PX4/PX4-Autopilot.git -b v1.15.0 --recursive 
+</code></pre>
+<p>xx修改为你指定的版本</p>
+<pre><code class="language-shell">RUN git clone https://github.com/PX4/PX4-Autopilot.git -b v1.xx.0 --recursive 
+</code></pre>
+<h2 id="3-docker-build">3 docker build</h2>
+<p>将docker_files文件夹放到，与提供的dockerfile文件同目录下：</p>
+<p><img alt="" src="../pic/filepos.png" /></p>
+<p>在该目录下新建终端窗口，使用以下命令进行build。"--network=host"为共享主机网络，"-f dockfile-swiftwing"指定本地dockerfile文件，"-t swiftwing_simulation:latest"为镜像命名且添加tag</p>
+<pre><code class="language-shell">sudo docker build --network=host -f dockfile-swiftwing -t swiftwing_simulation:latest .
+</code></pre>
+<p>如果卡在第一步，无法拉取"px4io/px4-dev-simulation-focal:2024-05-18"镜像，建议在build之前先拉取镜:</p>
+<pre><code class="language-shell">sudo docker pull px4io/px4-dev-simulation-focal:2024-05-18
+</code></pre>
+<h2 id="4-docker-run">4 docker run</h2>
+<p>首先在主机终端执行以下命令，开启docker的x权限：</p>
+<pre><code class="language-shell">xhost +local:docker
+</code></pre>
+<p>使用以下命令开启docker，可以进行图形化显示gazebo。</p>
+<pre><code class="language-shell">sudo docker run -it  --device=/dev/dri --group-add video --network=host --volume=/tmp/.X11-unix:/tmp/.X11-unix  --env=&quot;DISPLAY=$DISPLAY&quot; swiftwing_simulation:latest /bin/bash
+</code></pre>
+<p>如果使用了"--network=host"参数，docker中启动飞机后，宿主机打开qgc地面站，可以自动连接飞机；</p>
+<p>如果不使用"--network=host"参数，可以将px4的launch文件中的gcs_url从</p>
+<pre><code class="language-shell">&lt;arg name=&quot;gcs_url&quot; value=&quot;&quot;/&gt;
+</code></pre>
+<p>改为udp广播：</p>
+<pre><code class="language-shell">&lt;arg name=&quot;gcs_url&quot; value=&quot;udp-b://@&quot;/&gt;
+</code></pre>
+<p>如果不使用广播自动连接，可以在启动的rolaunch终端中新建一个mavlink链接，"192.168.x.xxx"为宿主机的ip地址：</p>
+<pre><code class="language-shell">pxh&gt;  mavlink start -p -u 14556 -t 192.168.x.xxx-o 14550
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../1%E4%BB%BF%E7%9C%9F%E5%B9%B3%E5%8F%B0%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="btn btn-neutral float-left" title="仿真平台环境配置"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../3%E4%BB%BF%E7%9C%9Fdemo%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/" class="btn btn-neutral float-right" title="仿真demo快速上手">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../1%E4%BB%BF%E7%9C%9F%E5%B9%B3%E5%8F%B0%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../3%E4%BB%BF%E7%9C%9Fdemo%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
