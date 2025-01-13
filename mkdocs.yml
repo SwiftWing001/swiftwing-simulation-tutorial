@@ -4,7 +4,3 @@ theme:
   # name: material
   # name: rtd-dropdown
   name: readthedocs
-extra:
-  footer: ""
-extra_css:
-  - 'css/custom.css'
