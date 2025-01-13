@@ -1,0 +1,10 @@
+site_name: swiftwing-simulation-tutorial
+site_url: https://SwiftWing001.github.io/swiftwing-simulation-tutorial/
+theme:
+  # name: material
+  # name: rtd-dropdown
+  name: readthedocs
+extra:
+  footer: ""
+extra_css:
+  - 'css/custom.css'
