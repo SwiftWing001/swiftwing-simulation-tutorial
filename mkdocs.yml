@@ -4,3 +4,4 @@ theme:
   # name: material
   # name: rtd-dropdown
   name: readthedocs
+site_dir: $READTHEDOCS_OUTPUT/html
