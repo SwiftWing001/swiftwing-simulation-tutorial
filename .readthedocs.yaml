@@ -15,7 +15,7 @@ build:
   commands:
     - mkdir -p $READTHEDOCS_OUTPUT/html 
     # - pip install mkdocs-material  
-    # - pip install mkdocs-rtd-dropdown
+    - pip install mkdocs-rtd-dropdown
     - mkdocs build --strict 
 
 # Optionally declare the Python requirements required to build your docs
