@@ -13,7 +13,7 @@ build:
   tools:
     python: "3.12"
   commands:
-    - mkdir -p $READTHEDOCS_OUTPUT/html 
+    # - mkdir -p $READTHEDOCS_OUTPUT/html 
     # - pip install mkdocs-material  
     - pip install mkdocs-rtd-dropdown
     - mkdocs build --strict 
