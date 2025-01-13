@@ -4,6 +4,9 @@
 # Required
 version: 2
 
+mkdocs:
+  configuration: mkdocs.yml
+
 # Set the version of Python and other tools you might need
 build:
   os: ubuntu-22.04
@@ -13,9 +16,7 @@ build:
     - mkdir -p $READTHEDOCS_OUTPUT/html 
     - pip install mkdocs-material  
     - pip install mkdocs-rtd-dropdown
-
-mkdocs:
-  configuration: mkdocs.yml
+    - mkdocs build --strict 
 
 # Optionally declare the Python requirements required to build your docs
 # python:
