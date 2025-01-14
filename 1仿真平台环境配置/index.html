@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://SwiftWing001.github.io/swiftwing-simulation-tutorial/1%E4%BB%BF%E7%9C%9F%E5%B9%B3%E5%8F%B0%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>仿真平台环境配置 - swiftwing-simulation-tutorial</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\u4eff\u771f\u5e73\u53f0\u73af\u5883\u914d\u7f6e";
+        var mkdocs_page_input_path = "1\u4eff\u771f\u5e73\u53f0\u73af\u5883\u914d\u7f6e.md";
+        var mkdocs_page_url = "/swiftwing-simulation-tutorial/1%E4%BB%BF%E7%9C%9F%E5%B9%B3%E5%8F%B0%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> swiftwing-simulation-tutorial
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">目录</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">仿真平台环境配置</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#1-ubuntu">1 Ubuntu安装</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-ros-noetic">2 ROS Noetic安装</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-px4">3 PX4安装</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#31-px4gazebo">3.1 PX4+Gazebo</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#32-mavros">3.2 MAVROS</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#33-qgc">3.3 安装QGC</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#34">3.4 仿真</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#4">4 显卡驱动安装</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../2%E4%BD%BF%E7%94%A8Docker%E9%83%A8%E7%BD%B2%E4%BB%BF%E7%9C%9F%E7%8E%AF%E5%A2%83/">使用docker部署仿真环境</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../3%E4%BB%BF%E7%9C%9Fdemo%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/">仿真demo快速上手</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../4uav_control%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">uav_control功能包</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">swiftwing-simulation-tutorial</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">仿真平台环境配置</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="_1">仿真平台环境配置</h1>
+<p>具体配置包括：<code>Ubuntu 20.04 + ROS Noetic + PX4 + Python3</code>。</p>
+<p>需要注意的是，PX4版本迭代较快，新旧版本在默认参数配置上可能稍有出入。若非特殊需求，建议不要安装过旧的版本；此外，PX4+ROS的仿真环境实际上PX4只是作为一个工作空间，因此即使版本不符合要求，也仅需要重新下载编译，并更新环境变量，一般不会对整个ROS环境造成影响。</p>
+<p>仿真平台搭建过程主要有三个步骤：
+1. 安装Ubuntu20.04；
+2. 安装ROS Noetic；
+3. 安装PX4环境。</p>
+<h2 id="1-ubuntu">1 Ubuntu安装</h2>
+<p>Ubuntu安装教程网上较多，此处不再详细叙述。下面简单介绍u盘安装Ubuntu的过程，该方法需要一台用于镜像烧录的<strong>电脑</strong>和制作启动盘的<strong>u盘</strong>。双系统和虚拟机安装过程类似可以自行寻找教程。具体步骤如下：</p>
+<ol>
+<li><a href="https://www.sysgeek.cn/make-ubuntu-usb-flash-drive/">制作u盘启动盘</a>。在<a href="https://releases.ubuntu.com/focal/">Ubuntu官网</a>下载Ubuntu20.04镜像文件，用rufus或者ultraISO等工具写入u盘中。（<strong>注意</strong>：此举会覆盖掉u盘中的内容并且修改u盘分区，使其不可用于文件拷贝，请确保u盘中没有重要文件；在系统安装完成后，可以使用diskgenius等工具修复u盘。）</li>
+<li><a href="https://blog.csdn.net/SuichI314/article/details/123148534">Ubuntu安装</a>。u盘插入待安装系统的电脑，启动进入bios，选择从u盘启动，开始安装。（<strong>注意</strong>：真机和虚拟机的安装过程相同，因此可以参考这篇博客的安装过程。）</li>
+<li><a href="https://cloud.tencent.com/developer/article/2156923">添加中文支持</a>。部分教程会提供终端改为中文的教程。个人建议终端保持原样，这样在出现报错信息时便于搜索。</li>
+<li>建议使用英文系统，文件夹路径不会有中文，避免一些潜在的bash路径问题。</li>
+<li>如果安装双系统后，开机出现启动引导问题，无法启动Ubuntu系统或Windows系统，可以使用boot-repair工具。使用u盘启动盘，bios进入u盘的Ubuntu系统，下载boot-repair软件（需要联网）。下载方式参考此链接：https://help.ubuntu.com/community/Boot-Repair。
+   打开boot-repair后，选择recommended repair即可，系统会自动为你创建Windows+Ubuntu的引导方式。进入bios可以修改启动顺序。</li>
+</ol>
+<h2 id="2-ros-noetic">2 ROS Noetic安装</h2>
+<p>Ubuntu20.04对应的ros版本为ROS Noetic。强烈建议安装前先实现终端走代理，可解决大部分网络问题。</p>
+<p>1.<a href="https://zhuanlan.zhihu.com/p/142014944">换源</a>。由于官方源在国外，用官方源安装软件可能网速较慢，因此可以换用国内的镜像源。若已经实现终端代理，可直接使用官方源跳过此步。</p>
+<p>2.更新源</p>
+<pre><code class="language-shell">sudo apt update
+sudo apt upgrade
+</code></pre>
+<p>3.设置ros源：</p>
+<pre><code class="language-shell">sudo sh -c 'echo &quot;deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main&quot; &gt; /etc/apt/sources.list.d/ros-latest.list'
+</code></pre>
+<p>4.设置密钥：</p>
+<pre><code class="language-shell">curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
+</code></pre>
+<p>若提示没有安装curl，先安装：</p>
+<pre><code class="language-shell">sudo apt install curl
+</code></pre>
+<p>5.ros安装。ros提供 <code>ros-noetic-desktop-full</code>、<code>ros-noetic-desktop</code>、<code>ros-noetic-ros-base</code>三种不同版本，其中<code>ros-noetic-desktop-full</code>包含附件最全，除非设备储存空间十分有限，否则建议安装此版本。安装命令</p>
+<pre><code class="language-shell">sudo apt update
+sudo apt install ros-noetic-desktop-full
+</code></pre>
+<p>6.设置环境变量。在home目录下，按ctrl+h显示出隐藏文件，在.bashrc文件末尾添加如下一行指令。</p>
+<pre><code class="language-shell">source /opt/ros/noetic/setup.bash
+</code></pre>
+<p>这步是为了将ros的相关命令地址写入<code>.bashrc</code>文件，以便在终端调用ros相关指令。</p>
+<p>7.rosdep安装。</p>
+<pre><code class="language-shell">sudo apt install python3-rosdep
+sudo rosdep init
+sudo rosdep update
+</code></pre>
+<p>在执行后两句是即使代理配置完成也有相当概率无法完成，此时可以使用国内大佬写的工具<a href="https://mp.weixin.qq.com/s/VGs8oWdhHH6XsHcx21lN4Q">rosdepc</a>，也可以通过手动<a href="https://blog.csdn.net/weixin_44911552/article/details/115067306">更改文件实现</a>。</p>
+<p>8.测试。安装完成后，可进行简单测试：打开三个终端，分别输入以下指令并运行。</p>
+<pre><code class="language-shell">roscore 
+rosrun turtlesim turtlesim_node 
+rosrun turtlesim turtle_teleop_key
+</code></pre>
+<p>上述第一个命令是打开一个roscore，roscore用于统一协调管理所有ros话题、节点和服务，是ros运行的基础；第二个命令是打开海龟仿真界面，第三个命令用于打开键盘控制终端。</p>
+<h2 id="3-px4">3 PX4安装</h2>
+<p>px4的安装有：px4下载编译、mavros安装、qground安装三步。其中px4是飞控代码，基于px4搭建的仿真环境即是用了其提供的软在环仿真功能；mavros是有mavlink封装而来的ros功能包，飞控的控制一般是采用mavlink协议，通过mavros我们可以直接利用ros提供的话题、服务等对与飞控进行通信；qground是地面站平台，直接与px4进行通信（无需通过ros），地面站可现实无人机状态、设置飞控参数、控制无人机飞行，还提供模拟摇杆功能，我们主要利用地面站进行无人机状态监视。</p>
+<h3 id="31-px4gazebo">3.1 PX4+Gazebo</h3>
+<p>1.第一步中，px4并不一定需要安装在用户目录下，可根据个人习惯安装在指定路径。</p>
+<pre><code class="language-shell">cd 安装目录
+git clone https://github.com/PX4/PX4-Autopilot.git --recursive
+</code></pre>
+<p>如果要使用其他版本的px4，例如1.13.0版本，则使用以下命令：</p>
+<pre><code class="language-shell">git clone -b v1.13.0 https://github.com/PX4/PX4-Autopilot.git --recursive
+</code></pre>
+<p>2.进入安装目录，下载安装相关组件</p>
+<pre><code class="language-shell">cd PX4-Autopilot/
+git submodule update --init --recursive
+</code></pre>
+<p>3.执行.sh脚本</p>
+<pre><code class="language-shell">bash ./PX4-Autopilot/Tools/setup/ubuntu.sh
+</code></pre>
+<p>4.期间可能出错，需要更新一下pip和Pillow</p>
+<pre><code class="language-shell">python3 -m pip install --upgrade pip
+python3 -m pip install --upgrade Pillow
+</code></pre>
+<p>如果有其他安装错误，可以尝试使用：</p>
+<pre><code class="language-shell">bash ./PX4-Autopilot/Tools/setup/ubuntu.sh --fix-missing
+</code></pre>
+<p>5.最后进入PX4-Autopilot目录下编译启动gazebo中的模型</p>
+<pre><code class="language-shell">make px4_sitl_default gazebo
+</code></pre>
+<p>在终端输入commander takeoff，可以控制无人机起飞；在终端输入commander land，可以控制无人机降落。</p>
+<p>6.编译完成后，在home文件的.bashrc中添加环境变量，“安装目录”为你的PX4-Autopilot文件夹所在目录：</p>
+<pre><code class="language-shell">source 安装目录/PX4-Autopilot/Tools/simulation/gazebo-classic/setup_gazebo.bash 安装目录/PX4-Autopilot 安装目录/PX4-Autopilot/build/px4_sitl_default
+export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:安装目录/PX4-Autopilot
+export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:安装目录/PX4-Autopilot/Tools/simulation/gazebo-classic/sitl_gazebo-classic
+</code></pre>
+<p>这里需要注意，不同版本的gazebo模型目录可能会不一致，如果使用旧版本，需要自行对照正确的路径。如果无法确定路径位置，可以找自己对应版本的px4 user guide。user guider的Drone Apps&amp;APIs→ROS with MAVROS→ROS/MAVROS with Gazebo Simulation的文章中，有详细介绍对应的路径位置。</p>
+<h3 id="32-mavros">3.2 MAVROS</h3>
+<p>1.安装MAVROS</p>
+<pre><code class="language-shell">sudo apt-get install ros-noetic-mavros ros-noetic-mavros-extras
+</code></pre>
+<p>2.安装 GeographicLib 数据集</p>
+<pre><code class="language-shell">sudo /opt/ros/noetic/lib/mavros/install_geographiclib_datasets.sh
+</code></pre>
+<h3 id="33-qgc">3.3 安装QGC</h3>
+<p>安装QGC地面站，参考<a href="https://docs.qgroundcontrol.com/master/en/qgc-user-guide/getting_started/download_and_install.html">官方网站</a>即可。</p>
+<h3 id="34">3.4  仿真</h3>
+<p>通过以下命令可以开启px4软件在环仿真，打开qgc地面站会自动连接上飞机。</p>
+<pre><code class="language-shell">roslaunch px4 mavros_posix_sitl.launch
+</code></pre>
+<p>能看到gazebo中无人机模型，qgc地面站连接上无人机。在终端中输入commander takeoff, commander land可以控制无人机起飞和降落。
+<img alt="" src="../pic/px4%2Bgazebo%2Bqgc.png" /></p>
+<h2 id="4">4 显卡驱动安装</h2>
+<p><strong>这一步并非必须，只是为了提高gazebo运行流畅度，不影响仿真环境的正常使用</strong>。
+显卡驱动安装可以参考此篇教程，推荐使用方法2，采用Ubuntu自带的驱动管理程序来安装显卡驱动。<a href="https://blog.csdn.net/m0_54792870/article/details/112980817">显卡驱动安装流程参考</a></p>
+<p>笔者曾采用上述链接中的方法1进行安装后，开机黑屏，屏幕左上方光标闪烁。该问题是选用驱动不合理导致的。可以重启进入ubuntu的恢复模式，选择root选项，在命令行中删除nvidia显卡驱动</p>
+<pre><code class="language-shell">sudo apt --purge remove nvidia*
+</code></pre>
+<p>然后重新尝试安装其他版本的驱动程序。</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="目录"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../2%E4%BD%BF%E7%94%A8Docker%E9%83%A8%E7%BD%B2%E4%BB%BF%E7%9C%9F%E7%8E%AF%E5%A2%83/" class="btn btn-neutral float-right" title="使用docker部署仿真环境">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../2%E4%BD%BF%E7%94%A8Docker%E9%83%A8%E7%BD%B2%E4%BB%BF%E7%9C%9F%E7%8E%AF%E5%A2%83/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
