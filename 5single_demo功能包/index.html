@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://SwiftWing001.github.io/swiftwing-simulation-tutorial/5single_demo%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://SwiftWing001.github.io/swiftwing-simulation-tutorial/5single_demo%E5%8A%9F%E8%83%BD%E5%8C%85/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
     <title>single_demo功能包 - swiftwing-simulation-tutorial</title>
     <link rel="stylesheet" href="../css/theme.css" />
@@ -13,8 +13,8 @@
       <script>
         // Current page data
         var mkdocs_page_name = "single_demo\u529f\u80fd\u5305";
-        var mkdocs_page_input_path = "5single_demo\u4f7f\u7528\u6559\u7a0b.md";
-        var mkdocs_page_url = "/swiftwing-simulation-tutorial/5single_demo%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/";
+        var mkdocs_page_input_path = "5single_demo\u529f\u80fd\u5305.md";
+        var mkdocs_page_url = "/swiftwing-simulation-tutorial/5single_demo%E5%8A%9F%E8%83%BD%E5%8C%85/";
       </script>
     
     <!--[if lt IE 9]>
@@ -56,17 +56,23 @@
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../4uav_control%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">uav_control功能包</a>
+                <li class="toctree-l1"><a class="reference internal" href="../4uav_control%E5%8A%9F%E8%83%BD%E5%8C%85/">uav_control功能包</a>
                 </li>
               </ul>
               <ul class="current">
                 <li class="toctree-l1 current"><a class="reference internal current" href="#">single_demo功能包</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#1">1 功能包简介</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2">2 文件说明</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3">3 使用方法</a>
+    </li>
     </ul>
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../6multi_demo%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">multi_demo功能包</a>
+                <li class="toctree-l1"><a class="reference internal" href="../6multi_demo%E5%8A%9F%E8%83%BD%E5%8C%85/">multi_demo功能包</a>
                 </li>
               </ul>
       </div>
@@ -93,12 +99,32 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="single_demo">single_demo功能包</h1>
+<h2 id="1">1 功能包简介</h2>
+<ul>
+<li><strong>single_demo功能包</strong>主要提供了一些基础的单机控制演示案例；</li>
+<li>该功能包内的控制演示案例主要基于GVF导航向量场来计算期望速度矢量；  </li>
+<li>该功能包不直接向MAVROS话题发送控制指令，而是发布上层控制指令，对于新手入门较为友好。期望控制指令由uav_contrl功能包中的vector_fw.py和vectoor_vtol.py启动的节点所接收，并由其发布姿态控制指令至MAVROS话题。</li>
+</ul>
+<h2 id="2">2 文件说明</h2>
+<ul>
+<li>scripts目录下的.py文件为五个单机跟踪控制演示；</li>
+<li>gvf_lib目录下为对应的导航向量场库文件。</li>
+</ul>
+<h2 id="3">3 使用方法</h2>
+<p>1.启动节点文件(以circle_track.py为例)</p>
+<pre><code class="language-shell">rosrun single_demo circle_track.py
+</code></pre>
+<p>或直接在<code>scripts</code>目录下</p>
+<pre><code class="language-shell">python circle_track.py
+</code></pre>
+<p>2.启动节点后，circle_track.py会根据gvf库，计算<strong>期望速度控制指令</strong>，并发布至<code>/control_signal/vector</code>话题</p>
+<p>3.若要使用att姿态控制，将<code>control_type = "vel"</code>改为<code>control_type = "att"</code>，vector_sp数据为<code>[roll, pitch, yaw, force]</code>。</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../4uav_control%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" class="btn btn-neutral float-left" title="uav_control功能包"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../6multi_demo%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" class="btn btn-neutral float-right" title="multi_demo功能包">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../4uav_control%E5%8A%9F%E8%83%BD%E5%8C%85/" class="btn btn-neutral float-left" title="uav_control功能包"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../6multi_demo%E5%8A%9F%E8%83%BD%E5%8C%85/" class="btn btn-neutral float-right" title="multi_demo功能包">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -121,10 +147,10 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../4uav_control%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../4uav_control%E5%8A%9F%E8%83%BD%E5%8C%85/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../6multi_demo%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../6multi_demo%E5%8A%9F%E8%83%BD%E5%8C%85/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
