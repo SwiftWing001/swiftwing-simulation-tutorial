@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://SwiftWing001.github.io/swiftwing-simulation-tutorial/3%E4%BB%BF%E7%9C%9Fdemo%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://SwiftWing001.github.io/swiftwing-simulation-tutorial/6multi_demo%E5%8A%9F%E8%83%BD%E5%8C%85/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>仿真demo快速上手 - swiftwing-simulation-tutorial</title>
+    <title>multi_demo功能包 - swiftwing-simulation-tutorial</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "\u4eff\u771fdemo\u5feb\u901f\u4e0a\u624b";
-        var mkdocs_page_input_path = "3\u4eff\u771fdemo\u5feb\u901f\u4e0a\u624b.md";
-        var mkdocs_page_url = "/swiftwing-simulation-tutorial/3%E4%BB%BF%E7%9C%9Fdemo%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/";
+        var mkdocs_page_name = "multi_demo\u529f\u80fd\u5305";
+        var mkdocs_page_input_path = "6multi_demo\u529f\u80fd\u5305.md";
+        var mkdocs_page_url = "/swiftwing-simulation-tutorial/6multi_demo%E5%8A%9F%E8%83%BD%E5%8C%85/";
       </script>
     
     <!--[if lt IE 9]>
@@ -51,18 +51,8 @@
                 <li class="toctree-l1"><a class="reference internal" href="../2%E4%BD%BF%E7%94%A8Docker%E9%83%A8%E7%BD%B2%E4%BB%BF%E7%9C%9F%E7%8E%AF%E5%A2%83/">使用docker部署仿真环境</a>
                 </li>
               </ul>
-              <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="#">仿真demo快速上手</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#1">1 简介</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#2">2 使用</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#3">3 单机控制</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#4">4 多机编队</a>
-    </li>
-    </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../3%E4%BB%BF%E7%9C%9Fdemo%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/">仿真demo快速上手</a>
                 </li>
               </ul>
               <ul>
@@ -73,8 +63,16 @@
                 <li class="toctree-l1"><a class="reference internal" href="../5single_demo%E5%8A%9F%E8%83%BD%E5%8C%85/">single_demo功能包</a>
                 </li>
               </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../6multi_demo%E5%8A%9F%E8%83%BD%E5%8C%85/">multi_demo功能包</a>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">multi_demo功能包</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#1">1 功能包简介</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2">2 文件说明</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3">3 使用方法</a>
+    </li>
+    </ul>
                 </li>
               </ul>
               <ul>
@@ -95,7 +93,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">仿真demo快速上手</li>
+      <li class="breadcrumb-item active">multi_demo功能包</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -104,54 +102,36 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="demo">仿真demo快速上手</h1>
-<h2 id="1">1 简介</h2>
+                <h1 id="multi_demo">multi_demo功能包</h1>
+<h2 id="1">1 功能包简介</h2>
 <ul>
-<li>包含三个ros功能包：uav_control、single_demo、multi_demo;</li>
-<li>uav_coontrol提供了无人机控制类模板;</li>
-<li>single_demo为单无人机控制；</li>
-<li>multi_demo为多机编队控制；</li>
+<li><strong>multi_demo功能包</strong>为多机编队，目前仅支持VTOL机型；</li>
+<li>编队算法基于leader-follower控制； </li>
+<li>leader会发布自身位置、速度状态数据，供follower订阅接受。</li>
 </ul>
-<h2 id="2">2 使用</h2>
+<h2 id="2">2 文件说明</h2>
 <ul>
-<li>创建你自己的工作空间和功能包名；</li>
-<li>将提供的三个功能包内的launch文件和scripts文件放入对应文件夹内即可；</li>
-<li>catkin_make编译工作空间；</li>
-<li>将px4_launch文件夹内的launch文件复制到PX4-Autopilot/launch目录下。</li>
+<li><code>leader.py</code>根据设定的航线，计算得到期望的姿态控制指令发布给uav_controller包内的vector_vtol节点；同时会发布自身的位置、速度状态数据至ROS话题；</li>
+<li><code>follower.py</code>将订阅leader的位置、速度数据，根据LQR控制器计算期望的姿态控制指令。</li>
 </ul>
-<h2 id="3">3 单机控制</h2>
-<p>1.启动px4软件在环仿真环境：
-启动单固定翼无人机：</p>
-<pre><code class="language-shell">roslaunch px4 single_plane.launch
+<h2 id="3">3 使用方法</h2>
+<p>1.启动<code>px4</code>多无人机仿真环境</p>
+<pre><code class="language-shell">roslaunch px4 6_vtol.launch
 </code></pre>
-<p>启动单垂起固定翼无人机</p>
-<pre><code class="language-shell">roslaunch px4 single_vtol.launch
+<p>2.启动<code>leader_follower</code>例程</p>
+<pre><code class="language-shell">roslaunch multi_demo 6_leader_follower.launch
 </code></pre>
-<p>2.启动单机控制文件：
-固定翼跟踪控制</p>
-<pre><code class="language-shell">roslaunch single_demo plane_circle_track.launch
-</code></pre>
-<p>垂起固定翼跟踪控制</p>
-<pre><code class="language-shell">roslaunch single_demo plane_circle_track.launch
-</code></pre>
-<h2 id="4">4 多机编队</h2>
-<p>1.若地面站切换到哪个飞机才起飞，就在PX4-Autopilot/build/px4_sitl_default/etc/init.d-posix/px4-rc.params 文件中添加一行：</p>
-<pre><code class="language-shell">param set-default COM_RCL_EXCEPT 4
-</code></pre>
-<p>该操作为设置无遥控信号情况下，飞机仍然可以进入offboard模式。</p>
-<p>2.启动px4软件在环环境：</p>
-<pre><code class="language-shell">roslaunch px4 6_vtol.launch 
-</code></pre>
-<p>3.启动多机编队launch文件：</p>
-<pre><code class="language-shell">roslaunch leader_follower_vtol 6_swarm.launch 
-</code></pre>
-<p>4.若要修改架次，修改对应launch文件中的无人机数量即可，最多不超过10架。（后续更多架次待开发）</p>
+<p>note：<br />
+- <code>6_leader_follower.launch</code>会启动1架领航者和5架跟随者，通过修改上述的两个launch文件可以更改无人机数量；<br />
+- 本例程中无人机的运动控制指令通过<code>/control_signal/att</code>发布；<br />
+- 用户可通过更改领航者的轨迹更改编队轨迹，领航者的轨迹定义在<code>multi_demo/scripts/leader_uav.py</code>中<br />
+- 可单独启动领航者进行测试，启动指令 <code>roslaunch multi_demo leader.launch</code></p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../2%E4%BD%BF%E7%94%A8Docker%E9%83%A8%E7%BD%B2%E4%BB%BF%E7%9C%9F%E7%8E%AF%E5%A2%83/" class="btn btn-neutral float-left" title="使用docker部署仿真环境"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../4uav_controller%E5%8A%9F%E8%83%BD%E5%8C%85/" class="btn btn-neutral float-right" title="uav_controller功能包">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../5single_demo%E5%8A%9F%E8%83%BD%E5%8C%85/" class="btn btn-neutral float-left" title="single_demo功能包"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../7launch%E6%96%87%E4%BB%B6%E4%BD%BF%E7%94%A8/" class="btn btn-neutral float-right" title="launch文件使用">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -174,10 +154,10 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../2%E4%BD%BF%E7%94%A8Docker%E9%83%A8%E7%BD%B2%E4%BB%BF%E7%9C%9F%E7%8E%AF%E5%A2%83/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../5single_demo%E5%8A%9F%E8%83%BD%E5%8C%85/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../4uav_controller%E5%8A%9F%E8%83%BD%E5%8C%85/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../7launch%E6%96%87%E4%BB%B6%E4%BD%BF%E7%94%A8/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

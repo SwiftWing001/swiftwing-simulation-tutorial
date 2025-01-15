@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://SwiftWing001.github.io/swiftwing-simulation-tutorial/7launch%E6%96%87%E4%BB%B6%E4%BD%BF%E7%94%A8/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>launch文件使用 - swiftwing-simulation-tutorial</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "launch\u6587\u4ef6\u4f7f\u7528";
+        var mkdocs_page_input_path = "7launch\u6587\u4ef6\u4f7f\u7528.md";
+        var mkdocs_page_url = "/swiftwing-simulation-tutorial/7launch%E6%96%87%E4%BB%B6%E4%BD%BF%E7%94%A8/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> swiftwing-simulation-tutorial
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">目录</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../1%E4%BB%BF%E7%9C%9F%E5%B9%B3%E5%8F%B0%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">仿真平台环境配置</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../2%E4%BD%BF%E7%94%A8Docker%E9%83%A8%E7%BD%B2%E4%BB%BF%E7%9C%9F%E7%8E%AF%E5%A2%83/">使用docker部署仿真环境</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../3%E4%BB%BF%E7%9C%9Fdemo%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/">仿真demo快速上手</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../4uav_controller%E5%8A%9F%E8%83%BD%E5%8C%85/">uav_controller功能包</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../5single_demo%E5%8A%9F%E8%83%BD%E5%8C%85/">single_demo功能包</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../6multi_demo%E5%8A%9F%E8%83%BD%E5%8C%85/">multi_demo功能包</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">launch文件使用</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#1-sitllaunch">1 启动单机sitl实例launch文件</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-sitllaunch">2 启动多机sitl实例launch文件</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-launch">3 单机控制launch文件</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#4-launch">4 多机控制launch文件</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">swiftwing-simulation-tutorial</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">launch文件使用</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="launch">launch文件使用</h1>
+<h2 id="1-sitllaunch">1 启动单机sitl实例launch文件</h2>
+<p>参考<code>PX4-Autopilot/launch</code>目录下<code>mavros_posix_sitl_launch.launch</code>文件：</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;launch&gt;
+    &lt;!-- MAVROS posix SITL environment launch script --&gt;
+    &lt;!-- launches MAVROS, PX4 SITL, Gazebo environment, and spawns vehicle --&gt;
+    &lt;!-- vehicle pose --&gt;
+    &lt;arg name=&quot;x&quot; default=&quot;0&quot;/&gt;
+    &lt;arg name=&quot;y&quot; default=&quot;0&quot;/&gt;
+    &lt;arg name=&quot;z&quot; default=&quot;0&quot;/&gt;
+    &lt;arg name=&quot;R&quot; default=&quot;0&quot;/&gt;
+    &lt;arg name=&quot;P&quot; default=&quot;0&quot;/&gt;
+    &lt;arg name=&quot;Y&quot; default=&quot;0&quot;/&gt;
+    &lt;!-- vehicle model and world --&gt;
+    &lt;arg name=&quot;est&quot; default=&quot;ekf2&quot;/&gt;
+    &lt;arg name=&quot;vehicle&quot; default=&quot;iris&quot;/&gt;
+    &lt;arg name=&quot;world&quot; default=&quot;$(find mavlink_sitl_gazebo)/worlds/empty.world&quot;/&gt;
+    &lt;arg name=&quot;sdf&quot; default=&quot;$(find mavlink_sitl_gazebo)/models/$(arg vehicle)/$(arg vehicle).sdf&quot;/&gt;
+
+    &lt;!-- gazebo configs --&gt;
+    &lt;arg name=&quot;gui&quot; default=&quot;true&quot;/&gt;
+    &lt;arg name=&quot;debug&quot; default=&quot;false&quot;/&gt;
+    &lt;arg name=&quot;verbose&quot; default=&quot;false&quot;/&gt;
+    &lt;arg name=&quot;paused&quot; default=&quot;false&quot;/&gt;
+    &lt;arg name=&quot;respawn_gazebo&quot; default=&quot;false&quot;/&gt;
+    &lt;!-- MAVROS configs --&gt;
+    &lt;arg name=&quot;fcu_url&quot; default=&quot;udp://:14540@localhost:14557&quot;/&gt;
+    &lt;arg name=&quot;respawn_mavros&quot; default=&quot;false&quot;/&gt;
+    &lt;!-- PX4 configs --&gt;
+    &lt;arg name=&quot;interactive&quot; default=&quot;true&quot;/&gt;
+    &lt;!-- PX4 SITL and Gazebo --&gt;
+    &lt;include file=&quot;$(find px4)/launch/posix_sitl.launch&quot;&gt;
+        &lt;arg name=&quot;x&quot; value=&quot;$(arg x)&quot;/&gt;
+        &lt;arg name=&quot;y&quot; value=&quot;$(arg y)&quot;/&gt;
+        &lt;arg name=&quot;z&quot; value=&quot;$(arg z)&quot;/&gt;
+        &lt;arg name=&quot;R&quot; value=&quot;$(arg R)&quot;/&gt;
+        &lt;arg name=&quot;P&quot; value=&quot;$(arg P)&quot;/&gt;
+        &lt;arg name=&quot;Y&quot; value=&quot;$(arg Y)&quot;/&gt;
+        &lt;arg name=&quot;world&quot; value=&quot;$(arg world)&quot;/&gt;
+        &lt;arg name=&quot;vehicle&quot; value=&quot;$(arg vehicle)&quot;/&gt;
+        &lt;arg name=&quot;sdf&quot; value=&quot;$(arg sdf)&quot;/&gt;
+        &lt;arg name=&quot;gui&quot; value=&quot;$(arg gui)&quot;/&gt;
+        &lt;arg name=&quot;interactive&quot; value=&quot;$(arg interactive)&quot;/&gt;
+        &lt;arg name=&quot;debug&quot; value=&quot;$(arg debug)&quot;/&gt;
+        &lt;arg name=&quot;verbose&quot; value=&quot;$(arg verbose)&quot;/&gt;
+        &lt;arg name=&quot;paused&quot; value=&quot;$(arg paused)&quot;/&gt;
+        &lt;arg name=&quot;respawn_gazebo&quot; value=&quot;$(arg respawn_gazebo)&quot;/&gt;
+    &lt;/include&gt;
+    &lt;!-- MAVROS --&gt;
+    &lt;include file=&quot;$(find mavros)/launch/px4.launch&quot;&gt;
+        &lt;!-- GCS link is provided by SITL --&gt;
+        &lt;arg name=&quot;gcs_url&quot; value=&quot;&quot;/&gt;
+        &lt;arg name=&quot;fcu_url&quot; value=&quot;$(arg fcu_url)&quot;/&gt;
+        &lt;arg name=&quot;respawn_mavros&quot; value=&quot;$(arg respawn_mavros)&quot;/&gt;
+    &lt;/include&gt;
+&lt;/launch&gt;
+
+</code></pre>
+<p>更改不同飞机类型可以将</p>
+<pre><code>&lt;arg name=&quot;vehicle&quot; default=&quot;iris&quot;/&gt;
+</code></pre>
+<p>改为固定翼：</p>
+<pre><code>&lt;arg name=&quot;vehicle&quot; default=&quot;plane&quot;/&gt;
+</code></pre>
+<p>改为垂起：</p>
+<pre><code>&lt;arg name=&quot;vehicle&quot; default=&quot;standard_vtol&quot;/&gt;
+</code></pre>
+<p>其他更多机型可以参考PX4-AUTOPILOT目录内的gazebo目录下其他机型，以及查看PX4官方user guide提供的模型。</p>
+<h2 id="2-sitllaunch">2 启动多机sitl实例launch文件</h2>
+<p>参考<code>PX4-Autopilot/launch</code>目录下<code>multi_uav_sitl_launch.launch</code>文件，原始文件为3机sitl，若需要添加额外飞机，参考文件末尾注释：</p>
+<pre><code>&lt;!-- to add more UAVs (up to 10):
+Increase the id
+Change the name space
+Set the FCU to default=&quot;udp://:14540+id@localhost:14550+id&quot;
+Set the malink_udp_port to 14560+id --&gt;
+</code></pre>
+<p>这里注意往后添加FCU的udp端口，从第四架次后面为<code>"udp://:14540+id@localhost:14550+id"</code>，详细可参考提供的<code>px4_launch/6_vtol.launch</code>。最多仅支持10架多机，超过10架次会导致端口冲突，需要重新修改PX4自身端口配置。</p>
+<h2 id="3-launch">3 单机控制launch文件</h2>
+<p>1.参考<code>single_demoo/launch/plane_circle_track.launch</code>文件：</p>
+<pre><code>&lt;launch&gt;
+    &lt;group&gt;
+        &lt;node name=&quot;single_plane&quot; pkg=&quot;uav_controller&quot; type=&quot;vector_fw.py&quot; output=&quot;screen&quot;/&gt;
+        &lt;node name=&quot;cmd_node&quot; pkg=&quot;single_demo&quot; type=&quot;circle_track.py&quot; output=&quot;screen&quot;/&gt;
+    &lt;/group&gt;
+&lt;/launch&gt;
+</code></pre>
+<p>2.分别启动两个功能包的节点文件：<br />
+- <code>vector_fw.py</code>改为<code>vector_vtol.py</code>即可切换为垂起无人机；<br />
+- <code>circle_track.py</code>改为<code>single_demo/scripts</code>目录下的其他控制节点文件，即可实现其他控制方法。</p>
+<h2 id="4-launch">4 多机控制launch文件</h2>
+<p>1.多机控制launch文件为<code>multi_demo/launch/6_leader_follower.launch</code>:</p>
+<pre><code>&lt;launch&gt;
+    &lt;arg name=&quot;amount&quot; value=&quot;6&quot;/&gt;
+
+    &lt;include file=&quot;$(find uav_controller)/launch/get_local_pose.launch&quot;&gt;
+        &lt;arg name=&quot;uav_type&quot; value=&quot;standard_vtol&quot;/&gt;
+        &lt;arg name=&quot;uav_amount&quot; value=&quot;$(arg amount)&quot;/&gt;
+    &lt;/include&gt;
+
+    &lt;include file=&quot;$(find multi_demo)/launch/leader.launch&quot;&gt;
+        &lt;arg name=&quot;uav_id&quot; value=&quot;0&quot;/&gt;
+    &lt;/include&gt;
+
+    &lt;include file=&quot;$(find multi_demo)/launch/single_follower.launch&quot;&gt;
+        &lt;arg name=&quot;uav_id&quot; value=&quot;1&quot;/&gt;
+        &lt;arg name=&quot;uav_amount&quot; value=&quot;$(arg amount)&quot;/&gt;
+    &lt;/include&gt;
+
+    &lt;include file=&quot;$(find multi_demo)/launch/single_follower.launch&quot;&gt;
+        &lt;arg name=&quot;uav_id&quot; value=&quot;2&quot;/&gt;
+        &lt;arg name=&quot;uav_amount&quot; value=&quot;$(arg amount)&quot;/&gt;
+    &lt;/include&gt;
+
+    &lt;include file=&quot;$(find multi_demo)/launch/single_follower.launch&quot;&gt;
+        &lt;arg name=&quot;uav_id&quot; value=&quot;3&quot;/&gt;
+        &lt;arg name=&quot;uav_amount&quot; value=&quot;$(arg amount)&quot;/&gt;
+    &lt;/include&gt;
+
+    &lt;include file=&quot;$(find multi_demo)/launch/single_follower.launch&quot;&gt;
+        &lt;arg name=&quot;uav_id&quot; value=&quot;4&quot;/&gt;
+        &lt;arg name=&quot;uav_amount&quot; value=&quot;$(arg amount)&quot;/&gt;
+    &lt;/include&gt;
+
+    &lt;include file=&quot;$(find multi_demo)/launch/single_follower.launch&quot;&gt;
+        &lt;arg name=&quot;uav_id&quot; value=&quot;5&quot;/&gt;
+        &lt;arg name=&quot;uav_amount&quot; value=&quot;$(arg amount)&quot;/&gt;
+    &lt;/include&gt;
+
+&lt;/launch&gt;
+</code></pre>
+<p>2.启动<code>get_local_pose.launch</code>文件，作用是统一多机编队坐标系；<br />
+3.启动1架leader，5架follwer编队控制；<br />
+4.若要增加或修改架次，根据<code>multi_demo/launch/6_leader_follower.launch</code>添加或删减follower即可；同时也要修改px4 launch文件中<code>6_vtol.launch</code>架次。</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../6multi_demo%E5%8A%9F%E8%83%BD%E5%8C%85/" class="btn btn-neutral float-left" title="multi_demo功能包"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../6multi_demo%E5%8A%9F%E8%83%BD%E5%8C%85/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

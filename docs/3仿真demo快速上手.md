@@ -40,7 +40,8 @@ roslaunch single_demo plane_circle_track.launch
 ```shell
 param set-default COM_RCL_EXCEPT 4
 ```
-该操作为设置无遥控信号情况下，飞机仍然可以进入offboard模式
+该操作为设置无遥控信号情况下，飞机仍然可以进入offboard模式。
+
 2.启动px4软件在环环境：
 ````shell
 roslaunch px4 6_vtol.launch 
