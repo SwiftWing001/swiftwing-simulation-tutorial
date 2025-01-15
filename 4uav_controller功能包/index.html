@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://SwiftWing001.github.io/swiftwing-simulation-tutorial/4uav_control%E5%8A%9F%E8%83%BD%E5%8C%85/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://SwiftWing001.github.io/swiftwing-simulation-tutorial/4uav_controller%E5%8A%9F%E8%83%BD%E5%8C%85/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>uav_control功能包 - swiftwing-simulation-tutorial</title>
+    <title>uav_controller功能包 - swiftwing-simulation-tutorial</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "uav_control\u529f\u80fd\u5305";
-        var mkdocs_page_input_path = "4uav_control\u529f\u80fd\u5305.md";
-        var mkdocs_page_url = "/swiftwing-simulation-tutorial/4uav_control%E5%8A%9F%E8%83%BD%E5%8C%85/";
+        var mkdocs_page_name = "uav_controller\u529f\u80fd\u5305";
+        var mkdocs_page_input_path = "4uav_controller\u529f\u80fd\u5305.md";
+        var mkdocs_page_url = "/swiftwing-simulation-tutorial/4uav_controller%E5%8A%9F%E8%83%BD%E5%8C%85/";
       </script>
     
     <!--[if lt IE 9]>
@@ -56,7 +56,7 @@
                 </li>
               </ul>
               <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="#">uav_control功能包</a>
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">uav_controller功能包</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#1">1 功能包简介</a>
     </li>
@@ -77,6 +77,10 @@
                 <li class="toctree-l1"><a class="reference internal" href="../6multi_demo%E5%8A%9F%E8%83%BD%E5%8C%85/">multi_demo功能包</a>
                 </li>
               </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../7launch%E6%96%87%E4%BB%B6%E4%BD%BF%E7%94%A8/">launch文件使用</a>
+                </li>
+              </ul>
       </div>
     </div>
     </nav>
@@ -91,7 +95,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">uav_control功能包</li>
+      <li class="breadcrumb-item active">uav_controller功能包</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -100,33 +104,33 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="uav_control">uav_control功能包</h1>
+                <h1 id="uav_controller">uav_controller功能包</h1>
 <h2 id="1">1 功能包简介</h2>
-<p>uav_control功能包提供单机基础控制功能，该功能包主要功能为创建一个无人机控制类的实例化，接收上层控制指令，发送控制指令至标准mavros控制话题。</p>
+<p>uav_controller功能包提供单机基础控制功能，该功能包主要功能为创建一个无人机控制类的实例化，接收上层控制指令，发送控制指令至标准mavros控制话题。</p>
 <h2 id="2">2 文件说明</h2>
 <ul>
-<li>vector_fw.py和vector_vtol.py对应固定翼、垂起的单机控制节点；</li>
-<li>get_local_pose.py为获取无人机在gazebo中的位置并发布，这样处理是为了解决多机编队的坐标系统一的问题；</li>
-<li>FW_class.py和VTOL_classs.py为封装好的固定翼、垂起控制类，并在vector_fw.py和vector_vtol.py中被调用；</li>
-<li>myPID.py提供了PID控制器类，可以直接倒入库并调用；</li>
-<li>useful_function提供常用坐标系转换、姿态四元数转换等函数；</li>
-<li>spawn_uav.py仅提供无人机状态数据获取。</li>
+<li><code>vector_fw.py</code>和<code>vector_vtol.py</code>对应固定翼、垂起的单机控制节点；</li>
+<li><code>get_local_pose.py</code>为获取无人机在gazebo中的位置并发布，这样处理是为了解决多机编队的坐标系统一的问题；</li>
+<li><code>FW_class.py</code>和<code>VTOL_classs.py</code>为封装好的固定翼、垂起控制类，并在<code>vector_fw.py</code>和<code>vector_vtol.py</code>中被调用；</li>
+<li><code>myPID.py</code>提供了PID控制器类，可以直接倒入库并调用；</li>
+<li><code>useful_function</code>提供常用坐标系转换、姿态四元数转换等函数；</li>
+<li><code>spawn_uav.py</code>仅提供无人机状态数据获取。</li>
 </ul>
 <h2 id="3">3 使用方法</h2>
-<p>1.该功能包主要功能文件为vector_fw.py和vector_vtol.py。启动节点，使用：</p>
+<p>1.该功能包主要功能文件为<code>vector_fw.py</code>和<code>vector_vtol.py</code>。启动节点，使用：</p>
 <pre><code class="language-shell">rosrun uav_control vector_fw.py
 </code></pre>
 <p>或直接在<code>scripts</code>目录下</p>
 <pre><code class="language-shell">python vector_fw.py
 </code></pre>
-<p>2.启动节点后，vector_fw.py和vector_vtol.py会自动订阅相关的期望速度(或姿态)控制话题；</p>
+<p>2.启动节点后，<code>vector_fw.py</code>和<code>vector_vtol.py</code>会自动订阅相关的期望速度(或姿态)控制话题；</p>
 <p>3.外部发送指令为姿态控制指令，会将期望姿态控制指令直接发布至<code>/mavros/setpoint_raw/attitude</code>话题进行姿态控制。</p>
 <p>4.外部发送指令为速度控制指令，会将期望速度控制指令，输入偏航控制器+TECS控制器解算，解算后得到期望姿态和推力，发布至<code>/mavros/setpoint_raw/attitude</code>话题进行姿态控制。</p>
 <h2 id="4">4 其他</h2>
 <ul>
-<li>如有需要其他数据话题订阅、服务请求，可以在对应的FW_class和VTOL_class中添加；</li>
-<li>若需要添加额外的底层控制算法，建议在FW_class.py中的VectorControlPlane类，或VTOL_class.py中的VectorControlVtol类中添加；</li>
-<li>若需要添加其他MAVROS控制话题发布，建议在MotionControl函数中添加。</li>
+<li>如有需要其他数据话题订阅、服务请求，可以在对应的<code>FW_class.py</code>和<code>VTOL_class.py</code>中添加；</li>
+<li>若需要添加额外的底层控制算法，建议在<code>FW_class.py</code>中的<code>VectorControlPlane</code>类，或<code>VTOL_class.py</code>中的<code>VectorControlVtol</code>类中添加；</li>
+<li>若需要添加其他MAVROS控制话题发布，建议在<code>MotionControl</code>函数中添加。</li>
 </ul>
               
             </div>

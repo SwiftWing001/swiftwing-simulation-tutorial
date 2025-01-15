@@ -56,7 +56,7 @@
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../4uav_control%E5%8A%9F%E8%83%BD%E5%8C%85/">uav_control功能包</a>
+                <li class="toctree-l1"><a class="reference internal" href="../4uav_controller%E5%8A%9F%E8%83%BD%E5%8C%85/">uav_controller功能包</a>
                 </li>
               </ul>
               <ul>
@@ -73,6 +73,10 @@
     <li class="toctree-l2"><a class="reference internal" href="#3">3 使用方法</a>
     </li>
     </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../7launch%E6%96%87%E4%BB%B6%E4%BD%BF%E7%94%A8/">launch文件使用</a>
                 </li>
               </ul>
       </div>
@@ -107,23 +111,27 @@
 </ul>
 <h2 id="2">2 文件说明</h2>
 <ul>
-<li>scripts目录下的.py文件为五个单机跟踪控制演示；</li>
-<li>gvf_lib目录下为对应的导航向量场库文件。</li>
+<li><code>leader.py</code>根据设定的航线，计算得到期望的姿态控制指令发布给uav_controller包内的vector_vtol节点；同时会发布自身的位置、速度状态数据至ROS话题；</li>
+<li><code>follower.py</code>将订阅leader的位置、速度数据，根据LQR控制器计算期望的姿态控制指令。</li>
 </ul>
 <h2 id="3">3 使用方法</h2>
-<p>1.启动节点文件(以circle_track.py为例)</p>
-<pre><code class="language-shell">rosrun single_demo circle_track.py
+<p>1.启动<code>px4</code>多无人机仿真环境</p>
+<pre><code class="language-shell">roslaunch px4 6_vtol.launch
 </code></pre>
-<p>或直接在<code>scripts</code>目录下</p>
-<pre><code class="language-shell">python circle_track.py
+<p>2.启动<code>leader_follower</code>例程</p>
+<pre><code class="language-shell">roslaunch multi_demo 6_leader_follower.launch
 </code></pre>
-<p>2.启动节点后，circle_track.py会根据gvf库，计算<strong>期望速度控制指令</strong>，并发布至<code>/control_signal/vector</code>话题</p>
-<p>3.若要使用att姿态控制，将<code>control_type = "vel"</code>改为<code>control_type = "att"</code>，vector_sp数据为<code>[roll, pitch, yaw, force]</code>。</p>
+<p>note：<br />
+- <code>6_leader_follower.launch</code>会启动1架领航者和5架跟随者，通过修改上述的两个launch文件可以更改无人机数量；<br />
+- 本例程中无人机的运动控制指令通过<code>/control_signal/att</code>发布；<br />
+- 用户可通过更改领航者的轨迹更改编队轨迹，领航者的轨迹定义在<code>multi_demo/scripts/leader_uav.py</code>中<br />
+- 可单独启动领航者进行测试，启动指令 <code>roslaunch multi_demo leader.launch</code></p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../5single_demo%E5%8A%9F%E8%83%BD%E5%8C%85/" class="btn btn-neutral float-left" title="single_demo功能包"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../7launch%E6%96%87%E4%BB%B6%E4%BD%BF%E7%94%A8/" class="btn btn-neutral float-right" title="launch文件使用">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -148,6 +156,8 @@
     
       <span><a href="../5single_demo%E5%8A%9F%E8%83%BD%E5%8C%85/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
+    
+      <span><a href="../7launch%E6%96%87%E4%BB%B6%E4%BD%BF%E7%94%A8/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
