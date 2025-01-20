@@ -11,6 +11,7 @@ nav:
   - 环境配置:
     - 仿真平台环境配置: 1仿真平台环境配置.md
     - 使用Docker部署仿真环境: 2使用Docker部署仿真环境.md
+    # - 使用wsl部署环境: wsl教程.md
   - 使用教程:
     - 仿真demo快速上手: 3仿真demo快速上手.md
     - uav_controller功能包: 4uav_controller功能包.md
