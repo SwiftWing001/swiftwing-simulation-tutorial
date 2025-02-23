@@ -7,12 +7,18 @@
 - single_demo为单无人机控制；
 - multi_demo为多机编队控制；
 
-## 2 使用
+## 2 使用前准备
 - 创建你自己的工作空间和功能包名；
 - 将提供的三个功能包内的launch文件和scripts文件放入对应文件夹内即可；
 - catkin_make编译工作空间；
-- 将px4_launch文件夹内的launch文件复制到PX4-Autopilot/launch目录下。
-
+- 将环境变量写入.bashrc文件中；
+- 将px4_launch文件夹内的launch文件复制到PX4-Autopilot/launch目录下；
+- 需要额外安装3个Python包：geographiclib, scipy, plotly：
+```shell
+pip3 install geographiclib
+pip3 install scipy
+pip3 install plotly
+```
 
 ## 3 单机控制
 1.启动px4软件在环仿真环境：
