@@ -59,7 +59,7 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#33-qgc">3.3 安装QGC</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#34">3.4  仿真</a>
+    <li class="toctree-l3"><a class="reference internal" href="#34">3.4 仿真</a>
     </li>
         </ul>
     </li>
@@ -105,6 +105,7 @@
           <li class="breadcrumb-item">环境配置</li>
       <li class="breadcrumb-item active">仿真平台环境配置</li>
     <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/yourusername/your-repo-name/edit/master/docs/1仿真平台环境配置.md" class="icon icon-github"> Edit on GitHub</a>
     </li>
   </ul>
   <hr/>
@@ -168,26 +169,30 @@ rosrun turtlesim turtle_teleop_key
 <h2 id="3-px4">3 PX4安装</h2>
 <p>px4的安装有：px4下载编译、mavros安装、qground安装三步。其中px4是飞控代码，基于px4搭建的仿真环境即是用了其提供的软在环仿真功能；mavros是有mavlink封装而来的ros功能包，飞控的控制一般是采用mavlink协议，通过mavros我们可以直接利用ros提供的话题、服务等对与飞控进行通信；qground是地面站平台，直接与px4进行通信（无需通过ros），地面站可现实无人机状态、设置飞控参数、控制无人机飞行，还提供模拟摇杆功能，我们主要利用地面站进行无人机状态监视。</p>
 <h3 id="31-px4gazebo">3.1 PX4+Gazebo</h3>
-<p>1.第一步中，px4并不一定需要安装在用户目录下，可根据个人习惯安装在指定路径。</p>
+<p>1.第一步中，px4并不一定需要安装在用户目录下，可根据个人习惯安装在指定路径。
+这里推荐安装v1.15.0版本，目前我们主要的开发都基于1.15.0版本。</p>
 <pre><code class="language-shell">cd 安装目录
-git clone https://github.com/PX4/PX4-Autopilot.git --recursive
+git clone -b v1.15.0 https://github.com/PX4/PX4-Autopilot.git --recursive
 </code></pre>
-<p>如果要使用其他版本的px4，例如1.13.0版本，则使用以下命令：</p>
+<p>安装最新版本则去掉<code>-b v1.15.0</code>参数：</p>
+<pre><code class="language-shell">git clone https://github.com/PX4/PX4-Autopilot.git --recursive
+</code></pre>
+<p>如果要使用其他版本的px4，修改<code>-b</code>后的参数，例如1.13.0版本，则使用以下命令：</p>
 <pre><code class="language-shell">git clone -b v1.13.0 https://github.com/PX4/PX4-Autopilot.git --recursive
 </code></pre>
-<p>2.进入安装目录，下载安装相关组件</p>
+<p>2.进入安装目录，下载安装相关组件。这一步是为了防止上一步中，部分子模块未能更新完全。</p>
 <pre><code class="language-shell">cd PX4-Autopilot/
 git submodule update --init --recursive
 </code></pre>
 <p>3.执行.sh脚本</p>
-<pre><code class="language-shell">bash ./PX4-Autopilot/Tools/setup/ubuntu.sh
+<pre><code class="language-shell">bash ./Tools/setup/ubuntu.sh
 </code></pre>
 <p>4.期间可能出错，需要更新一下pip和Pillow</p>
 <pre><code class="language-shell">python3 -m pip install --upgrade pip
 python3 -m pip install --upgrade Pillow
 </code></pre>
 <p>如果有其他安装错误，可以尝试使用：</p>
-<pre><code class="language-shell">bash ./PX4-Autopilot/Tools/setup/ubuntu.sh --fix-missing
+<pre><code class="language-shell">bash ./Tools/setup/ubuntu.sh --fix-missing
 </code></pre>
 <p>5.期间会出现报错：
 <img alt="" src="../pic/error.png" /></p>
@@ -211,7 +216,7 @@ export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:安装目录/PX4-Autopilot/Tools/simul
 <p>1.安装MAVROS</p>
 <pre><code class="language-shell">sudo apt-get install ros-noetic-mavros ros-noetic-mavros-extras
 </code></pre>
-<p>2.安装 GeographicLib 数据集</p>
+<p>2.安装 GeographicLib 数据集（这一步可能比较慢，需要耐心等待）</p>
 <pre><code class="language-shell">sudo /opt/ros/noetic/lib/mavros/install_geographiclib_datasets.sh
 </code></pre>
 <h3 id="33-qgc">3.3 安装QGC</h3>
@@ -255,6 +260,10 @@ export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:安装目录/PX4-Autopilot/Tools/simul
 
   <div class="rst-versions" role="note" aria-label="Versions">
   <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/yourusername/your-repo-name" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
     
     
       <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>

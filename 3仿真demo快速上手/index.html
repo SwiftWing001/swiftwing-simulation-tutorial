@@ -56,7 +56,7 @@
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#1">1 简介</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#2">2 使用</a>
+    <li class="toctree-l2"><a class="reference internal" href="#2">2 使用前准备</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#3">3 单机控制</a>
     </li>
@@ -95,6 +95,7 @@
           <li class="breadcrumb-item">使用教程</li>
       <li class="breadcrumb-item active">仿真demo快速上手</li>
     <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/yourusername/your-repo-name/edit/master/docs/3仿真demo快速上手.md" class="icon icon-github"> Edit on GitHub</a>
     </li>
   </ul>
   <hr/>
@@ -110,13 +111,19 @@
 <li>single_demo为单无人机控制；</li>
 <li>multi_demo为多机编队控制；</li>
 </ul>
-<h2 id="2">2 使用</h2>
+<h2 id="2">2 使用前准备</h2>
 <ul>
 <li>创建你自己的工作空间和功能包名；</li>
 <li>将提供的三个功能包内的launch文件和scripts文件放入对应文件夹内即可；</li>
 <li>catkin_make编译工作空间；</li>
-<li>将px4_launch文件夹内的launch文件复制到PX4-Autopilot/launch目录下。</li>
+<li>将环境变量写入.bashrc文件中；</li>
+<li>将px4_launch文件夹内的launch文件复制到PX4-Autopilot/launch目录下；</li>
+<li>需要额外安装3个Python包：geographiclib, scipy, plotly：</li>
 </ul>
+<pre><code class="language-shell">pip3 install geographiclib
+pip3 install scipy
+pip3 install plotly
+</code></pre>
 <h2 id="3">3 单机控制</h2>
 <p>1.启动px4软件在环仿真环境：
 启动单固定翼无人机：</p>
@@ -170,6 +177,10 @@
 
   <div class="rst-versions" role="note" aria-label="Versions">
   <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/yourusername/your-repo-name" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
     
     
       <span><a href="../2%E4%BD%BF%E7%94%A8Docker%E9%83%A8%E7%BD%B2%E4%BB%BF%E7%9C%9F%E7%8E%AF%E5%A2%83/" style="color: #fcfcfc">&laquo; Previous</a></span>
